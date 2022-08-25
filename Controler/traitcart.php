@@ -1,0 +1,20 @@
+<?php
+session_start();
+    if(!isset($_SESSION["cart"])){
+        $i=0;
+       $c[$i][0]=$_POST['id'];
+        $c[$i][1]=$_POST['qt'];
+        $i+=1;
+        $_SESSION["cart"]=$c;
+        $_SESSION["nb"]=$i;
+    }else{
+        $i=$_SESSION['nb'];
+       $c=$_SESSION["cart"];
+        $c[$i][1]=$_POST['qt'];
+        $c[$i][0]=$_POST['id'];
+        $i+=1;
+        $_SESSION["cart"]=$c;
+        $_SESSION["nb"]=$i;
+    }
+    header('location:../view/listprod.php');
+?>
